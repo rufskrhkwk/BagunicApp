@@ -29,7 +29,7 @@ public class SildeActivity extends AppCompatActivity {
         pagerAdapter = new MyAdapter(this, num_page);
         mPager.setAdapter(pagerAdapter);
 //Indicator
-        mIndicator = findViewById(R.id.indicator2);
+        mIndicator = findViewById(R.id.indicatorhome);
         mIndicator.setViewPager(mPager);
         mIndicator.createIndicators(num_page,0);
 //ViewPager Setting

@@ -3,7 +3,7 @@
     <style name="Theme.Bagunic" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">#FD3AFD</item>
+        <item name="colorPrimaryVariant">#558b2f</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

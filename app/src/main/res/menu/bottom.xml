@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/item1"
+        android:id="@+id/mainhome"
         android:enabled="true"
-        android:icon="@android:drawable/bottom_bar"
-        android:title="Item" />
+        android:icon="@drawable/baseline_home_black_24"
+        android:title="Home" />
     <item
-        android:id="@+id/item2"
+        android:id="@+id/mainbasket"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star_big_on"
-        android:title="Item2" />
+        android:icon="@drawable/baseline_shopping_cart_checkout_black_24"
+        android:title="Basket" />
     <item />
     <item
-        android:id="@+id/item3"
+        android:id="@+id/mainsetting"
         android:enabled="true"
-        android:icon="@android:drawable/btn_dialog"
-        android:title="item3" />
+        android:icon="@drawable/ic_drawer_settings"
+        android:title="Setting" />
     <item
-        android:id="@+id/item4"
+        android:id="@+id/mainchat"
         android:enabled="true"
-        android:icon="@android:drawable/btn_dialog"
-        android:title="item4" />
+        android:icon="@drawable/baseline_chat_bubble_outline_black_24"
+        android:title="chat" />
 </menu>

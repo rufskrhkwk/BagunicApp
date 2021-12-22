@@ -23,7 +23,7 @@
             android:scaleType="fitXY" />
 
         <me.relex.circleindicator.CircleIndicator3
-            android:id="@+id/indicator2"
+            android:id="@+id/indicatorhome"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="bottom"

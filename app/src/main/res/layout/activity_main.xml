@@ -4,78 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="800dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+        <ImageButton
+            android:id="@+id/mapbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:minWidth="50dp"
+            android:minHeight="50dp"
+            android:src="@android:drawable/ic_dialog_map"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.953"
+            app:tint="#19A51E"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toStartOf="@+id/loginid"
+            app:layout_constraintHorizontal_bias="0.855"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baguniclogo1" />
+
+        <TextView
+            android:id="@+id/loginid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="로그인이 필요해요"
+            app:layout_constraintBottom_toTopOf="@+id/mapbutton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.993"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
+        <Button
+            android:id="@+id/radialbutton"
+            android:layout_width="48dp"
+            android:layout_height="64dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="116dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/baseline_shopping_basket_black_24"
+            android:onClick="showClose"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/mapbutton"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FD3AFD"
+        android:background="#FFFFFF"
         android:gravity="bottom"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="#FFFFFF"
+        app:itemIconTint="#558B2F"
+        app:itemTextColor="#000000"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom" />
+        app:menu="@menu/bottom">
 
-    <ImageButton
-        android:id="@+id/mapbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:minWidth="50dp"
-        android:minHeight="50dp"
-        android:src="@android:drawable/ic_dialog_map"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866"
-        app:tint="#19A51E"
-        tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_begin="601dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/homebutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50121653" />
+        app:layout_constraintGuide_percent="0.5" />
 
-    <!--    <Button-->
-<!--        android:id="@+id/button"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:onClick="showClose"-->
-<!--        android:text="Show/Hide"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/guideline2"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.921"-->
-<!--        tools:layout_editor_absoluteX="0dp" />-->
+    <com.naylalabs.semiradialmenu.RadialMenuView
+        android:id="@+id/radial_menu_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/radialbutton"
+        android:visibility="gone">
 
-<!--    <com.naylalabs.semiradialmenu.RadialMenuView-->
-<!--        android:id="@+id/radial_menu_view"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_above="@id/button"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:visibility="gone" />-->
-
+    </com.naylalabs.semiradialmenu.RadialMenuView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
