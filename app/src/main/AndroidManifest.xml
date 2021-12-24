@@ -5,9 +5,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
-        android:name=".GlobalApplication"
+        android:name=".log.GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,19 +17,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bagunic"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.example.bagunic.chat.Chat"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityL"
+            android:exported="false" />
+
         <activity android:name=".CameraActivity"
-            android:exported="false"/>
+            android:exported="true"/>
         <activity
-            android:name="com.example.bagunic.PayActivity"
+            android:name="com.example.bagunic.sellbagunic.PayActivity"
             android:exported="false" />
         <activity
-            android:name=".RentalActivity"
+            android:name=".sellbagunic.RentalActivity"
             android:exported="false" />
         <activity
-            android:name=".JoinActivity"
+            android:name=".log.JoinActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".log.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".startfragment.SildeActivity"

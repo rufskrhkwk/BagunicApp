@@ -22,14 +22,23 @@
             android:background="#FFFFFF"
             android:minWidth="50dp"
             android:minHeight="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintEnd_toStartOf="@+id/logo"
+            app:layout_constraintHorizontal_bias="0.225"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             app:tint="#FFFFFF"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="54dp"
+            app:layout_constraintEnd_toStartOf="@+id/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_map_black_48" />
 
         <ImageView
             android:id="@+id/logo"
@@ -40,29 +49,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baguniclogo1" />
 
-        <TextView
-            android:id="@+id/loginid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:hint="로그인"
-            android:textSize="20sp"
+        <Button
+            android:id="@+id/radialbutton"
+            android:layout_width="48dp"
+            android:layout_height="64dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="156dp"
+            android:layout_marginEnd="179dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/baseline_shopping_basket_black_24"
+            android:onClick="showClose"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="51dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="54dp"
-            app:layout_constraintEnd_toStartOf="@+id/logo"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_map_black_48" />
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -76,7 +78,7 @@
         app:itemTextColor="#000000"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom">
+        app:menu="@menu/bottoml">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
@@ -93,6 +95,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
+
+    <com.naylalabs.semiradialmenu.RadialMenuView
+        android:id="@+id/radial_menu_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/radialbutton"
+
+        android:visibility="gone">
+
+    </com.naylalabs.semiradialmenu.RadialMenuView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,10 @@
-package com.example.bagunic;
+package com.example.bagunic.log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,23 +23,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bagunic.MainActivityL;
+import com.example.bagunic.R;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.Account;
-import com.kakao.sdk.user.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView join;
     private EditText edtidlog, edtpwlog;
-    private Button btnlog, btnlogreset;
+    private Button btnlog, btnlogreset,escape;
     private ImageButton kakaobutton;
     private RequestQueue queue;
     private StringRequest stringRequest;
@@ -59,12 +54,19 @@ public class LoginActivity extends AppCompatActivity {
         edtpwlog = findViewById(R.id.edtpw);
         btnlog = findViewById(R.id.btnlogin);
         join = findViewById(R.id.join);
+        escape = findViewById(R.id.escape);
         kakaobutton = findViewById(R.id.kakaobutton);
         //getSharedPreferences("파일이름",'모드')
         //모드 => 0 (읽기,쓰기가능)
         //모드 => MODE_PRIVATE (이 앱에서만 사용가능)
 
-
+  escape.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+          Intent intent = new Intent(getApplicationContext(),MainActivityL.class);
+          startActivity(intent);
+      }
+  });
 //        Log.d("KeyHash", getKeyHash());
 
         kakaobutton.setOnClickListener(new View.OnClickListener() {
@@ -88,21 +90,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-//        btnlogreset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
         btnlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 sendRequest();
             }
+
         });
 
 
@@ -162,7 +155,8 @@ public class LoginActivity extends AppCompatActivity {
             return null;
         });
 
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, MainActivityL.class);
+
         startActivity(intent);
 
     }
@@ -173,7 +167,7 @@ public class LoginActivity extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
         // 서버에 요청할 주소
 //        String url = "http://210.183.87.46:8086/z_Happynic/Login";
-        String url = "http://59.0.129.177:8087/AndroidServer/LoginService";
+        String url = "http://59.0.129.177:8087/BaguNic_project/LoginService";
 
 
         // 요청 문자열 저장
@@ -192,14 +186,15 @@ public class LoginActivity extends AppCompatActivity {
                         String phone = json.getString("phone");
 
                         BagunicMemberVO and = new BagunicMemberVO(id, phone);
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivityL.class);
                         Log.v("resultValue", id + "/" + phone + "/");
+                        successLogin(id);
                         intent.putExtra("and", and);
                         startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    Toast.makeText(getApplicationContext(), "반가워요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bagunic에 잘 오셨어요!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -244,7 +239,7 @@ public class LoginActivity extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
         // 서버에 요청할 주소
 //        String url = "http://210.183.87.46:8086/z_Happynic/Login";
-        String url = "http://59.0.129.177:8087/AndroidServer/KakaoLogin";
+        String url = " http://59.0.129.177:8087/BaguNic_project/kakaoLogin";
 
 
         // 요청 문자열 저장
@@ -263,13 +258,13 @@ public class LoginActivity extends AppCompatActivity {
                         String nick = json.getString("nick");
                         BagunicMemberVO and = new BagunicMemberVO(id, nick);
                         Log.v("resultValue", id + "/" + nick);
-
+                        successLogin(id);
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //                        getApplicationContext().startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    Toast.makeText(getApplicationContext(), "반가워요", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bagunic에 잘 오셨어요!", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -299,12 +294,18 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", user1.getEmail());
-                params.put("nick", user1.getProfile().getNickname());
+                params.put("name", user1.getProfile().getNickname());
                 return params;
             }
         };
         stringRequest.setTag(TAG);
         queue.add(stringRequest);
+    }
+
+
+    public void successLogin(String id) {
+        SharedPreferences spf = getSharedPreferences("LoginInfo", MODE_PRIVATE);
+        spf.edit().putString("LoginID", id).commit();
     }
 
 

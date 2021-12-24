@@ -1,4 +1,4 @@
-package com.example.bagunic;
+package com.example.bagunic.log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bagunic.R;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -26,8 +27,8 @@ import java.util.Map;
 
 public class JoinActivity extends AppCompatActivity {
 
-    private EditText joinid, joinpw, joinphone;
-    private Button joinbutton;
+    private EditText joinid, joinpw, joinphone,joinname;
+    private Button joinbutton,duplicationbutton;
 
     private RequestQueue queue;
 
@@ -42,9 +43,18 @@ public class JoinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_join);
         joinid = findViewById(R.id.joinid);
         joinpw = findViewById(R.id.joinpw);
+        joinname =findViewById(R.id.joinname);
         joinphone = findViewById(R.id.joinphone);
         joinbutton = findViewById(R.id.joinbutton);
+        duplicationbutton =findViewById(R.id.duplicationbutton);
+        duplicationbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DuplicationRequest();
+            }
+        });
         joinbutton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 sendRequest();
@@ -58,7 +68,7 @@ public class JoinActivity extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
         // 서버에 요청할 주소
 //        String url = "http://210.183.87.46:8086/z_Happynic/join";
-        String url = "http://59.0.129.177:8087/AndroidServer/JoinService";
+        String url = "http://59.0.129.177:8087/BaguNic_project/JoinService";
 
         // 요청 문자열 저장
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -96,7 +106,7 @@ public class JoinActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", joinid.getText().toString());
                 params.put("pw", joinpw.getText().toString());
-
+                params.put("name", joinname.getText().toString());
                 params.put("phone", joinphone.getText().toString());
 
                 return params;
@@ -108,6 +118,46 @@ public class JoinActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
     }
+public void DuplicationRequest(){
 
+    queue = Volley.newRequestQueue(this);
+    String url = "http://59.0.129.177:8087/BaguNic_project/email_check";
+
+    stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            Log.v("resultValue", response);
+
+        }
+    }, new Response.ErrorListener() {
+        // 서버와의 연동 에러시 출력
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            error.printStackTrace();
+        }
+    }) {
+        @Override //response를 UTF8로 변경해주는 소스코드
+        protected Response<String> parseNetworkResponse(NetworkResponse response) {
+            try {
+                String utf8String = new String(response.data, "UTF-8");
+                return Response.success(utf8String, HttpHeaderParser.parseCacheHeaders(response));
+            } catch (UnsupportedEncodingException e) {
+                // log error
+                return Response.error(new ParseError(e));
+            } catch (Exception e) {
+                // log error
+                return Response.error(new ParseError(e));
+            }
+        }
+
+    };
+    stringRequest.setTag(TAG);
+    queue.add(stringRequest);
+//    if(check == true){
+//
+//    }
+
+
+}
 
 }

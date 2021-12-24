@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.ListFragment;
 
+import com.example.bagunic.log.LoginActivity;
+
 public class Fragment3 extends ListFragment {
 
     @Override
@@ -21,7 +23,7 @@ public class Fragment3 extends ListFragment {
         View rootView = inflater.inflate(R.layout.mainfragment3, container, false);
 
         // xml의 listview id를 반드시 "@android:id/list"로 해줘야 한다.
-        String[] values = new String[] {"로그인","내 정보","공지사항","설정","테마","Q/A","고객센터",""};
+        String[] values = new String[] {"내 정보","공지사항","설정","테마","Q/A","고객센터"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
 
@@ -35,7 +37,7 @@ public class Fragment3 extends ListFragment {
         Log.d("Fragment: ", position + ": " +strText);
         Toast.makeText(this.getContext(), "클릭: " + position +" " + strText, Toast.LENGTH_SHORT).show();
         if(position == 0){
-            Intent intent = new Intent(getActivity(),LoginActivity.class);
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         }
     }

@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/parkaprk" />
+        app:srcCompat="@drawable/main1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -92,7 +92,7 @@
         android:fontFamily="sans-serif-black"
         android:gravity="center"
         android:text="추억을 드릴껍니다!"
-        android:textSize="48sp"
+        android:textSize="44sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/guideline3"

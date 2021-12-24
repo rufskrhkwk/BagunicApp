@@ -1,4 +1,4 @@
-package com.example.bagunic;
+package com.example.bagunic.sellbagunic;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.bagunic.R;
 
 import java.util.ArrayList;
 import java.util.List;

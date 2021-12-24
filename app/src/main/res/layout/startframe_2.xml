@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/basketcartoon" />
+        app:srcCompat="@drawable/main2" />
 
     <TextView
         android:id="@+id/textView"
@@ -43,6 +43,7 @@
         android:layout_marginEnd="16dp"
         android:text="필요한게 있으시면 저희가 준비해 드려요!"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +58,7 @@
         android:layout_marginEnd="32dp"
         android:text="저희 Bagunic 제품을 "
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -70,6 +72,7 @@
         android:layout_marginEnd="24dp"
         android:text="이용해보는거 어떠신가요?"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"

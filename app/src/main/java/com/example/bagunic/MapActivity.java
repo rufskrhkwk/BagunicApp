@@ -39,6 +39,7 @@ public class MapActivity extends AppCompatActivity implements MapView.CurrentLoc
         mapView = new MapView(this);
         mapViewContainer = (ViewGroup) findViewById(R.id.mapView);
         mapViewContainer.addView(mapView);
+        mapView.setZoomLevel(5, true);
         mapView.setMapViewEventListener(this);
         try {
             mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithHeading);
@@ -47,26 +48,9 @@ public class MapActivity extends AppCompatActivity implements MapView.CurrentLoc
         }
 
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(35.150223, 126.920475), true);
-        MapPOIItem marker = new MapPOIItem();
 
-        //맵 포인트 위도경도 설정
-        MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(35.149421, 126.921632);
-        marker.setItemName("테스트");
-        marker.setTag(0);
-        marker.setMapPoint(mapPoint);
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+        mappointmarker();
 
-        mapView.addPOIItem(marker);
-
-        MapPoint mapPoint2 = MapPoint.mapPointWithGeoCoord(35.140083848348716, 126.91705728227184);
-        marker.setItemName("펭귄마을?");
-        marker.setTag(0);
-        marker.setMapPoint(mapPoint2);
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
-
-        mapView.addPOIItem(marker);
 
 
         if (!checkLocationServicesStatus()) {
@@ -75,6 +59,8 @@ public class MapActivity extends AppCompatActivity implements MapView.CurrentLoc
             checkRunTimePermission();
         }
     }
+
+
 
     @Override
     protected void onDestroy() {
@@ -263,6 +249,97 @@ public class MapActivity extends AppCompatActivity implements MapView.CurrentLoc
 
     @Override
     public void onMapViewMoveFinished(MapView mapView, MapPoint mapPoint) {
+
+    }
+    public void mappointmarker(){
+        MapPOIItem marker = new MapPOIItem();
+        //맵 포인트 위도경도 설정
+        MapPoint mapPoint = MapPoint.mapPointWithGeoCoord(35.149421, 126.921632);
+        marker.setItemName("하늘공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+
+        MapPoint mapPoint2 = MapPoint.mapPointWithGeoCoord(35.140083848348716, 126.91705728227184);
+        marker.setItemName("펭귄마을");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint2);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+
+        MapPoint mapPoint3 = MapPoint.mapPointWithGeoCoord(35.114668, 126.848606);
+        marker.setItemName("매월호수공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint3);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+
+        MapPoint mapPoint4 = MapPoint.mapPointWithGeoCoord(35.126399, 126.869108);
+        marker.setItemName("풍암호수공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint4);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+
+        MapPoint mapPoint5 = MapPoint.mapPointWithGeoCoord(35.148684, 126.840198);
+        marker.setItemName("5.18 자유공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint5);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+        MapPoint mapPoint6 = MapPoint.mapPointWithGeoCoord(35.155509, 126.856540);
+        marker.setItemName("5.18 기념공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint6);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+        MapPoint mapPoint7 = MapPoint.mapPointWithGeoCoord(35.143945, 126.830809);
+        marker.setItemName("극락 친수 공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint7);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+        MapPoint mapPoint8 = MapPoint.mapPointWithGeoCoord(35.192616, 126.820439);
+        marker.setItemName("원당산 공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint8);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+        mapView.addPOIItem(marker);
+        MapPoint mapPoint9 = MapPoint.mapPointWithGeoCoord(35.224272, 126.843863);
+        marker.setItemName("쌍암공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint9);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
+        mapView.addPOIItem(marker);
+        MapPoint mapPoint10 = MapPoint.mapPointWithGeoCoord(35.211772, 126.803256);
+        marker.setItemName("안청공원");
+        marker.setTag(0);
+        marker.setMapPoint(mapPoint10);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+
+        mapView.addPOIItem(marker);
 
     }
 }

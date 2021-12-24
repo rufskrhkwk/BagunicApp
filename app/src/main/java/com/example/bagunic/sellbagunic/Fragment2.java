@@ -1,4 +1,4 @@
-package com.example.bagunic;
+package com.example.bagunic.sellbagunic;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.bagunic.R;
 
 import java.util.ArrayList;
 
@@ -39,8 +41,9 @@ public class Fragment2 extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 //각 아이템을 분간 할 수 있는 position과 뷰
                 String selectedItem = (String) view.findViewById(R.id.textView_name).getTag().toString();
-                Toast.makeText(getContext(), "Clicked: " + position +" " + selectedItem, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), " " + position +" " + selectedItem, Toast.LENGTH_SHORT).show();
                 if(position == 0){
+                    Toast.makeText(getContext(), "Bagunic의 기본.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), RentalActivity.class);
                     startActivity(intent);
                 }

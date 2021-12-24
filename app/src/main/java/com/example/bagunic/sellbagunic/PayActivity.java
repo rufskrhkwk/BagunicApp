@@ -1,7 +1,8 @@
-package com.example.bagunic;
+package com.example.bagunic.sellbagunic;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,6 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.bagunic.MainActivityL;
+import com.example.bagunic.R;
+import com.example.bagunic.startfragment.SildeActivity;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
@@ -27,8 +31,9 @@ public class PayActivity extends AppCompatActivity {
     // Request 작업을 할 Queue
     static RequestQueue requestQueue;
     // 결제 정보를 받을 변수
-    static String productName = "Bagunic A set"; // 상품 이름
-    static String productPrice = "100"; // 상품 가격
+    static String productName = "Bagunic A set" ; // 상품 이름
+    static String productPrice = "100" ; // 상품 가격
+    static String parkarea;
     // 웹 뷰
     WebView webView;
     // json 파싱
@@ -53,6 +58,11 @@ public class PayActivity extends AppCompatActivity {
     public PayActivity(String productName, String productPrice) {
         PayActivity.productName = productName;
         PayActivity.productPrice = productPrice;
+    }
+    public PayActivity(String productName, String productPrice,String text) {
+        PayActivity.productName = productName;
+        PayActivity.productPrice = productPrice;
+        PayActivity.parkarea = parkarea;
     }
 
     @Override
@@ -118,13 +128,13 @@ public class PayActivity extends AppCompatActivity {
                 params.put("cid", "TC0ONETIME"); // 가맹점 코드
                 params.put("partner_order_id", "1001"); // 가맹점 주문 번호
                 params.put("partner_user_id", "gorany"); // 가맹점 회원 아이디
-                params.put("item_name", "productName"); // 상품 이름
+                params.put("item_name", "Bagunic A set"); // 상품 이름
                 params.put("quantity", "1"); // 상품 수량
                 params.put("total_amount", "100"); // 상품 총액
                 params.put("tax_free_amount", "0"); // 상품 비과세
-                params.put("approval_url", "http://59.0.129.177:8087/AndroidServer/kakaoCash_s?partner_user_id="+id+"&item_name="+productName); // 결제 성공시 돌려 받을 url 주소
-                params.put("cancel_url", "http://59.0.129.177:8087/AndroidServer/kakaoCash_cancel.html"); // 결제 취소시 돌려 받을 url 주소
-                params.put("fail_url", "http://59.0.129.177:8087/AndroidServer/kakaoCash_fail.html"); // 결제 실패시 돌려 받을 url 주소
+                params.put("approval_url", "http://59.0.129.177:8087/BaguNic_project/kakaoCash_success?email="+productName+"&basket_type="+productPrice+"&park_area="+parkarea); // 결제 성공시 돌려 받을 url 주소
+                params.put("cancel_url", "http://59.0.129.177:8087/BaguNic_project/kakaoCash_fail"); // 결제 취소시 돌려 받을 url 주소
+                params.put("fail_url", "http://59.0.129.177:8087/BaguNic_project/kakaoCash_cancle"); // 결제 실패시 돌려 받을 url 주소
                 return params;
             }
 
@@ -169,6 +179,7 @@ public class PayActivity extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Log.e("Debug", "url" + url);
+            Handler handler=new Handler();
 
             if (url != null && url.contains("pg_token=")) {
                 String pg_Token = url.substring(url.indexOf("pg_token=") + 9);
@@ -188,9 +199,19 @@ public class PayActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            view.loadUrl(url);
+            handler.postDelayed(new Runnable(){
+                public void run(){
+                    view.loadUrl(url);
+                    Intent intent = new Intent(getApplicationContext(), MainActivityL.class);
+                    startActivity(intent);
+                  }
+            },1500);
+
+
             return false;
         }
+
     }
+
 }
 

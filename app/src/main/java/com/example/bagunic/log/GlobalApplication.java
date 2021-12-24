@@ -1,4 +1,4 @@
-package com.example.bagunic;
+package com.example.bagunic.log;
 
 import android.app.Application;
 

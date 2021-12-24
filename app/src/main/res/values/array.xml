@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="test">
+        <item>공원선택</item>
+        <item>여의도 한강공원</item>
+        <item>반포 한강공원</item>
+        <item>망원 한강공원</item>
+        <item>뚝섬 한강공원</item>
+        <item>잠실 한강공원</item>
+        <item>이촌 한강공원</item>
+        <item>잠원 한강공원</item>
+    </string-array>
+</resources>
+
+

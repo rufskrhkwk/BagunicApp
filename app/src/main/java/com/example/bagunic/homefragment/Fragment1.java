@@ -40,8 +40,8 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //ViewPager Setting
     mPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
 
-    mPager.setCurrentItem(1000); //시작 지점
-    mPager.setOffscreenPageLimit(4); //최대 이미지 수
+    mPager.setCurrentItem(750); //시작 지점
+    mPager.setOffscreenPageLimit(3); //최대 이미지 수
     mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

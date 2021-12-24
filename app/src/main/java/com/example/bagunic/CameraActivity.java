@@ -1,7 +1,10 @@
 package com.example.bagunic;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -16,16 +19,42 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.bagunic.log.BagunicMemberVO;
+import com.example.bagunic.log.LoginActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 
 public class CameraActivity extends AppCompatActivity {
@@ -34,17 +63,25 @@ public class CameraActivity extends AppCompatActivity {
     private final int REQ_CODE_SELECT_IMAGE = 100;
     private static final int CAMERA_CODE = 1002;
     private String img_path = new String();
-    private String serverURL = "http://59.0.129.177:8087/AndroidServer/getimg.jsp";  //<<서버주소
+    private String serverURL = "http://59.0.129.177:8087/BaguNic_project/getimg.jsp";  //<<서버주소
     private Bitmap image_bitmap_copy = null;
     private Bitmap image_bitmap = null;
     private String imageName = null;
-    Button btn_send, btn_camera;
+    Button btn_send, btn_camera , gpssend;
+    private RequestQueue queue;
+    private StringRequest stringRequest;
+    Uri imageUri;
+    String date;
+    String TAG ="Last Camera";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        Intent intent =getIntent();
+       gpssend = findViewById(R.id.gpssend);
+
+
+        Intent intent = getIntent();
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .permitDiskReads()
                 .permitDiskWrites()
@@ -55,8 +92,17 @@ public class CameraActivity extends AppCompatActivity {
         btn_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+                imageName = "SAMPLE_"+timeStamp+".jpg";
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, CAMERA_CODE);
+
+                imageUri = createImageUri(imageName, "jpeg");
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+
+                launcher.launch(intent);
+
+
             }
         });
         //이미지를 띄울 위젯
@@ -67,6 +113,7 @@ public class CameraActivity extends AppCompatActivity {
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, REQ_CODE_SELECT_IMAGE);
+
             }
         });
 
@@ -75,12 +122,32 @@ public class CameraActivity extends AppCompatActivity {
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getGps();
+                sendGps();
                 DoFileUpload(serverURL, img_path);
                 Toast.makeText(getApplicationContext(), "이미지 전송 성공", Toast.LENGTH_SHORT).show();
                 Log.d("Send", "Success");
+
+
             }
         });
     }//end of onCreate()
+    ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if (result.getResultCode() == RESULT_OK)
+            {
+                Log.e(TAG, "result : " + result);
+                Intent intent = result.getData();
+                Log.e(TAG, "intent : " + intent);
+                Uri uri = intent.getData();
+                Log.e(TAG, "uri : " + uri);
+                // imageview.setImageURI(uri);
+            }
+
+        }
+    });
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -221,7 +288,7 @@ public class CameraActivity extends AppCompatActivity {
 
     /**
      * Checks if the app has permission to write to device storage
-     *
+     * <p>
      * If the app does not has permission then the user will be prompted to grant permissions
      *
      * @param activity
@@ -239,5 +306,107 @@ public class CameraActivity extends AppCompatActivity {
             );
         }
     }
+
+
+
+
+    public void getGps() {
+
+        queue = Volley.newRequestQueue(this);
+        String url = "http://172.30.1.22:5000/gps";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            // 응답데이터를 받아오는 곳
+            @Override
+            public void onResponse(String response) {
+                Log.v("resultValue", response);
+                if (response.equals("로그인 시도가 있었읍니다")) {
+
+                } else {
+                    //json타입 문자열을 json객체로 변환해주는 메소드
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        Log.d("키값", json.toString());
+                        String gps = json.getString("gps");
+                        GpsVO log = new GpsVO(gps);
+                        Log.v("resultValue", gps);
+                        //Log.v("resultValue",json.getString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            // 서버와의 연동 에러시 출력
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            // 보낼 데이터를 저장하는 곳
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                return params;
+            }
+        };
+        stringRequest.setTag(TAG);
+        queue.add(stringRequest);
+    }
+
+    private void sendGps() {
+        queue = Volley.newRequestQueue(this);
+        String url = "http://59.0.129.177:8087/BaguNic_project/gps";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            // 응답데이터를 받아오는 곳
+            @Override
+            public void onResponse(String response) {
+                Log.v("resultValue", response);
+                if (response.equals("로그인 시도가 있었읍니다")) {
+                  } else {
+                    //json타입 문자열을 json객체로 변환해주는 메소드
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        Log.d("키값", json.toString());
+                        String gps = json.getString("gps");
+                        GpsVO log = new GpsVO(gps);
+                        Log.v("resultValue", gps);
+                        //Log.v("resultValue",json.getString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            // 서버와의 연동 에러시 출력
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            // 보낼 데이터를 저장하는 곳
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                return params;
+            }
+        };
+        stringRequest.setTag(TAG);
+        queue.add(stringRequest);
+    }
+    private Uri createImageUri(String fileName, String mimeType) {
+        Random random = new Random();
+        date = Integer.toString(random.nextInt(1000));
+
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.DISPLAY_NAME, "sample"+date+".jpg"); // 확장자가 붙어있는 파일명 ex) sample.jpg
+        values.put(MediaStore.Images.Media.MIME_TYPE, mimeType); // ex) image/jpeg
+        ContentResolver contentResolver = getContentResolver();
+
+        return contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+    }
+
 
 } //end of class
