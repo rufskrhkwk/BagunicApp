@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.example.bagunic.homefragment.Fragment1;
-import com.example.bagunic.log.LoginActivity;
+import com.example.bagunic.log.AgreeActivity;
 import com.example.bagunic.sellbagunic.Fragment2;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity  {
         loginid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AgreeActivity.class);
                 startActivity(intent);
             }
         });

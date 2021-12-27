@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1111111111111111" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.10925925925925926" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_agree.xml" value="0.33" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_agree2.xml" value="0.33" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_camera.xml" value="0.33" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_chat.xml" value="0.3004273504273504" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_join.xml" value="0.3515625" />
@@ -13,6 +15,7 @@
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_mainL.xml" value="0.3004273504273504" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_mainl.xml" value="0.3004273504273504" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_map.xml" value="0.2046875" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_notice.xml" value="0.3004273504273504" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_pay.xml" value="0.34692028985507245" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_rental.xml" value="0.33" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/activity_silde.xml" value="0.25" />
@@ -31,13 +34,24 @@
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/mainfragment22.xml" value="0.3546195652173913" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/mainfragment3.xml" value="0.33" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/mainfragment4.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/mainfragment5.xml" value="0.3004273504273504" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/note_item.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/review_main.xml" value="0.22476635514018692" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/reviewfragment1.xml" value="0.16880341880341881" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/reviewfragment2.xml" value="0.3004273504273504" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/reviewfragment3.xml" value="0.3004273504273504" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/rownotice.xml" value="0.3004273504273504" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/startframe_1.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/startframe_2.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/layout/startframe_3.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/menu/bottom.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/menu/bottomL.xml" value="0.3004273504273504" />
-        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/menu/bottoml.xml" value="0.3004273504273504" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/menu/bottoml.xml" value="0.33" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/menu/menu_bottom.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/menu/menu_notice.xml" value="0.3004273504273504" />
         <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/menu/menulogo.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/mipmap-anydpi-v26/ic_launcher_bagunic.xml" value="0.2188034188034188" />
+        <entry key="..\:/Users/smhrd/AndroidStudioProjects/Bagunic/app/src/main/res/mipmap-anydpi-v26/ic_launcher_bagunic_round.xml" value="0.2188034188034188" />
         <entry key="..\:/Users/smhrd/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.20416666666666666" />
       </map>
     </option>

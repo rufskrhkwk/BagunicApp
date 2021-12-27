@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bagunic.chat.Fragment4;
 import com.example.bagunic.homefragment.Fragment1;
+import com.example.bagunic.review.ReviewActivity;
 import com.example.bagunic.sellbagunic.Fragment2;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.naylalabs.semiradialmenu.MenuItemView;
@@ -49,6 +51,7 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
         logo = findViewById(R.id.logo);
         loginid = findViewById(R.id.loginid);
         mapbutton = findViewById(R.id.mapbutton);
+
 //        FrameLayout frameLayout = findViewById(R.id.frameLayout);
         BottomNavigationView bottomView = findViewById(R.id.bottomNavigationView);
 
@@ -98,7 +101,7 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
         playListFragment = new Fragment2();
         artistFragment = new Fragment3();
         albumsFragment = new Fragment4();
-//        folderFragment = new FolderFragment();
+       folderFragment = new Fragment5();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, songFragment).commit();
 
@@ -124,9 +127,9 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
                     albumsFragment.setArguments(bundle);
                     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, albumsFragment).commit();
                     return true;
-//                case R.id.menu5:
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, folderFragment).commit();
-//                    return true;
+                case R.id.mainreview:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, folderFragment).commit();
+                    return true;
             }
             return false;
         }

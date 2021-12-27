@@ -24,7 +24,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:srcCompat="@drawable/park3" />
+            app:srcCompat="@drawable/bagunicseel" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -89,13 +89,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
-                android:text="공원의 특산물?" />
+                android:text="폭죽" />
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="210dp"
+                android:layout_marginLeft="273dp"
                 android:layout_weight="1"
                 android:text="+5000원"
                 android:textSize="16sp" />
@@ -111,13 +111,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
-                android:text="애견과함께오는 사람들을위한 물품?" />
+                android:text="애견 장난감" />
 
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="85dp"
+                android:layout_marginLeft="230dp"
                 android:layout_weight="1"
                 android:text="+1000원"
                 android:textSize="16sp" />

@@ -27,17 +27,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.bagunic.log.BagunicMemberVO;
-import com.example.bagunic.log.LoginActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +42,6 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -67,7 +61,7 @@ public class CameraActivity extends AppCompatActivity {
     private Bitmap image_bitmap_copy = null;
     private Bitmap image_bitmap = null;
     private String imageName = null;
-    Button btn_send, btn_camera , gpssend;
+    Button btn_send, btn_camera,gpssend,start,end;
     private RequestQueue queue;
     private StringRequest stringRequest;
     Uri imageUri;
@@ -78,7 +72,7 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-       gpssend = findViewById(R.id.gpssend);
+       gpssend = findViewById(R.id.start);
 
 
         Intent intent = getIntent();
@@ -86,13 +80,25 @@ public class CameraActivity extends AppCompatActivity {
                 .permitDiskReads()
                 .permitDiskWrites()
                 .permitNetwork().build());
-
+        start = findViewById(R.id.start);
+        end = findViewById(R.id.end);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start();
+            }
+        });
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
         btn_camera = findViewById(R.id.btn_camera);
         imageView = (ImageView) findViewById(R.id.imageView);
         btn_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
                 imageName = "SAMPLE_"+timeStamp+".jpg";
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -101,8 +107,6 @@ public class CameraActivity extends AppCompatActivity {
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
 
                 launcher.launch(intent);
-
-
             }
         });
         //이미지를 띄울 위젯
@@ -132,18 +136,26 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
     }//end of onCreate()
+
+
     ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            if (result.getResultCode() == RESULT_OK)
-            {
-                Log.e(TAG, "result : " + result);
-                Intent intent = result.getData();
-                Log.e(TAG, "intent : " + intent);
-                Uri uri = intent.getData();
-                Log.e(TAG, "uri : " + uri);
-                // imageview.setImageURI(uri);
-            }
+          try{
+              if (result.getResultCode() == RESULT_OK)
+              {
+                  Log.e(TAG, "result : " + result);
+                  Intent intent = result.getData();
+                  Log.e(TAG, "intent : " + intent);
+                  Uri uri = intent.getData();
+                  Log.e(TAG, "uri : " + uri);
+                  // imageview.setImageURI(uri);
+              }
+          }catch (Exception e){
+              e.printStackTrace();
+          }
+
+
 
         }
     });
@@ -395,6 +407,56 @@ public class CameraActivity extends AppCompatActivity {
         };
         stringRequest.setTag(TAG);
         queue.add(stringRequest);
+    }
+    public void start() {
+
+        queue = Volley.newRequestQueue(getApplicationContext());
+
+        String url = "http://172.30.1.15:5000/Rental";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.v("resultValue", response);
+            }
+        }, new Response.ErrorListener() {
+            // 서버와의 연동 에러시 출력
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+
+        };
+        stringRequest.setTag(TAG);
+        queue.add(stringRequest);
+        Toast.makeText(getApplicationContext(), "시작하죠!", Toast.LENGTH_SHORT).show();
+    }
+    public void end() {
+
+        queue = Volley.newRequestQueue(getApplicationContext());
+
+        String url = "http://172.30.1.15:5000/Return";
+
+        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.v("resultValue", response);
+            }
+        }, new Response.ErrorListener() {
+            // 서버와의 연동 에러시 출력
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+
+        };
+        stringRequest.setTag(TAG);
+        queue.add(stringRequest);
+        Toast.makeText(getApplicationContext(), "고맙습니다!", Toast.LENGTH_SHORT).show();
     }
     private Uri createImageUri(String fileName, String mimeType) {
         Random random = new Random();

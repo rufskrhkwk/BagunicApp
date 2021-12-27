@@ -12,7 +12,12 @@
         android:enabled="true"
         android:icon="@drawable/baseline_shopping_cart_checkout_black_24"
         android:title="Basket" />
-    <item android:enabled="true" />
+    <item
+        android:id="@+id/mainreview"
+        android:enabled="true"
+        android:icon="@drawable/baseline_forest_black_24"
+        android:title="Review" />
+
     <item
         android:id="@+id/mainsetting"
         android:enabled="true"

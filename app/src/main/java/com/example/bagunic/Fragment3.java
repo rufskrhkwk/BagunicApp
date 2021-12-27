@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.fragment.app.ListFragment;
 
 import com.example.bagunic.log.LoginActivity;
+import com.example.bagunic.notice.NoticeActivity;
 
 public class Fragment3 extends ListFragment {
 
@@ -38,6 +39,9 @@ public class Fragment3 extends ListFragment {
         Toast.makeText(this.getContext(), "클릭: " + position +" " + strText, Toast.LENGTH_SHORT).show();
         if(position == 0){
             Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }else if(position == 1){
+            Intent intent = new Intent(getActivity(), NoticeActivity.class);
             startActivity(intent);
         }
     }
