@@ -21,7 +21,7 @@ import com.example.bagunic.sellbagunic.Fragment2;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity  {
-    private Fragment playListFragment, songFragment, artistFragment, albumsFragment, folderFragment;
+    private Fragment BasketFragment, HomeFragment, SettingFragment, albumsFragment, folderFragment;
     ImageButton mapbutton;
     TextView loginid;
     ImageView logo;
@@ -82,13 +82,13 @@ public class MainActivity extends AppCompatActivity  {
 
         bottomView.setOnNavigationItemSelectedListener(listener);
 
-        songFragment = new Fragment1();
-        playListFragment = new Fragment2();
-        artistFragment = new Fragment3();
+        HomeFragment = new Fragment1();
+        BasketFragment = new Fragment2();
+        SettingFragment = new Fragment3();
 //        albumsFragment = new Fragment4();
 //        folderFragment = new FolderFragment();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, songFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, HomeFragment).commit();
 
     }
 
@@ -98,13 +98,13 @@ public class MainActivity extends AppCompatActivity  {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.mainhome:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, songFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, HomeFragment).commit();
                     return true;
                 case R.id.mainbasket:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, playListFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, BasketFragment).commit();
                     return true;
                 case R.id.mainsetting:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, artistFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, SettingFragment).commit();
                     return true;
 //                case R.id.mainchat:
 //                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, albumsFragment).commit();

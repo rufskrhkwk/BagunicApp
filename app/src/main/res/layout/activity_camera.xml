@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cat" />
+        app:srcCompat="@drawable/basketcartoon" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -57,7 +57,7 @@
         android:layout_width="311dp"
         android:layout_height="305dp"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="42dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="72dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,13 +70,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            android:text="시작하기" />
+            android:text="대여시작" />
 
         <Button
             android:id="@+id/end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="끝내기" />
+            android:text="대여끝내기" />
 
         <Button
             android:id="@+id/btn_camera"
@@ -90,5 +90,15 @@
             android:layout_height="wrap_content"
             android:text="보내기" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:hint="사진을 찍고 터치 해서 사진을 올려주세요"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

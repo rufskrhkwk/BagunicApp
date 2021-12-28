@@ -43,7 +43,6 @@
                 android:id="@+id/duplicationbutton"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FEE500"
                 android:text="중복체크" />
 
         </LinearLayout>
@@ -79,7 +78,6 @@
             android:id="@+id/joinbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FEE500"
             android:minHeight="48dp"
             android:text="회원가입완료" />
 

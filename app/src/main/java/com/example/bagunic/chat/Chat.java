@@ -52,7 +52,7 @@ public class Chat extends AppCompatActivity {
         Intent intent = getIntent();
         and = (BagunicMemberVO) intent.getSerializableExtra("and");
         edtchat.setText(and.getId());
-        getLoginID();
+        String chatid =getLoginID();
 
 
         btnchat2.setOnClickListener(new View.OnClickListener() {

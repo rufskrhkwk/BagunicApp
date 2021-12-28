@@ -30,7 +30,7 @@ public class RentalActivity extends AppCompatActivity implements CompoundButton.
         basketprice = findViewById(R.id.basketprice);
         checkBox1 = findViewById(R.id.checkBox1);
         checkBox2 = findViewById(R.id.checkBox2);
-        checkBox3 = findViewById(R.id.checkBox3);
+        checkBox3 = findViewById(R.id.check1);
 
         checkBox1.setOnCheckedChangeListener(this);
         checkBox2.setOnCheckedChangeListener(this);

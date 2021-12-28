@@ -164,7 +164,7 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        Toast.makeText(getBaseContext(), "resultCode : " + data, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "사진을 등록해주세요.", Toast.LENGTH_SHORT).show();
 
         if (requestCode == REQ_CODE_SELECT_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
@@ -325,7 +325,7 @@ public class CameraActivity extends AppCompatActivity {
     public void getGps() {
 
         queue = Volley.newRequestQueue(this);
-        String url = "http://172.30.1.22:5000/gps";
+        String url = "http://192.168.5.46:5000/gps";
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             // 응답데이터를 받아오는 곳
@@ -412,7 +412,7 @@ public class CameraActivity extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(getApplicationContext());
 
-        String url = "http://172.30.1.15:5000/Rental";
+        String url = "http://192.168.5.46:5000/Rental";
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -437,7 +437,7 @@ public class CameraActivity extends AppCompatActivity {
 
         queue = Volley.newRequestQueue(getApplicationContext());
 
-        String url = "http://172.30.1.15:5000/Return";
+        String url = "http://192.168.5.46:5000/Return";
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 

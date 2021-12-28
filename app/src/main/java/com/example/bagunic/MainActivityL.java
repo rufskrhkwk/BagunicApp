@@ -33,7 +33,7 @@ import com.naylalabs.semiradialmenu.RadialMenuView;
 import java.util.ArrayList;
 
 public class MainActivityL extends AppCompatActivity implements RadialMenuView.RadialMenuListener {
-    private Fragment playListFragment, songFragment, artistFragment, albumsFragment, folderFragment;
+    private Fragment BasketFragment, HomeFragment, SettingFragment, ChatFragment, ReviewFragment;
     RadialMenuView radialMenuView;
     Button radialbutton;
     ImageButton mapbutton;
@@ -97,13 +97,13 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
 
         bottomView.setOnNavigationItemSelectedListener(listener);
 
-        songFragment = new Fragment1();
-        playListFragment = new Fragment2();
-        artistFragment = new Fragment3();
-        albumsFragment = new Fragment4();
-       folderFragment = new Fragment5();
+        HomeFragment = new Fragment1();
+        BasketFragment = new Fragment2();
+        SettingFragment = new Fragment3();
+        ChatFragment = new Fragment4();
+        ReviewFragment = new Fragment5();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, songFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, HomeFragment).commit();
 
     }
 
@@ -113,22 +113,22 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.mainhome:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, songFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, HomeFragment).commit();
                     return true;
                 case R.id.mainbasket:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, playListFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, BasketFragment).commit();
                     return true;
                 case R.id.mainsetting:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, artistFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, SettingFragment).commit();
                     return true;
                 case R.id.mainchat:
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("and", getIntent().getSerializableExtra("and"));
-                    albumsFragment.setArguments(bundle);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, albumsFragment).commit();
+                    ChatFragment.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, ChatFragment).commit();
                     return true;
                 case R.id.mainreview:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, folderFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, ReviewFragment).commit();
                     return true;
             }
             return false;
@@ -149,7 +149,7 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
         } else if (i == 1) {
             sendLED();
             Toast.makeText(this, "LED on", Toast.LENGTH_SHORT).show();
-        }else if (i == 2){
+        } else if (i == 2) {
             sendSol();
             Toast.makeText(this, "Lock on", Toast.LENGTH_SHORT).show();
         }
@@ -158,7 +158,7 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
     private void sendSol() {
         queue = Volley.newRequestQueue(getApplicationContext());
 
-        String url = "http://220.80.203.121:5000/sol";
+        String url = "http://192.168.5.46:5000/sol";
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -184,7 +184,7 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
 
         queue = Volley.newRequestQueue(getApplicationContext());
 
-        String url = "http://220.80.203.121:5000/led";
+        String url = "http://192.168.5.46:5000/led";
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 

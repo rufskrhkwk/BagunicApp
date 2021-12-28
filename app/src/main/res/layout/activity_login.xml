@@ -40,7 +40,6 @@
         android:id="@+id/btnlogin"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:backgroundTint="#FEE500"
         android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,13 +76,14 @@
         android:id="@+id/kakaobutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.204"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline6"
         app:layout_constraintVertical_bias="0.33"
-        app:srcCompat="@drawable/kakao_login" />
+        app:srcCompat="@drawable/kakao_login_medium_narrow" />
 
     <Button
         android:id="@+id/escape"

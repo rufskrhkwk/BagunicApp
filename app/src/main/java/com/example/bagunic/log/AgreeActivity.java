@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ public class AgreeActivity extends AppCompatActivity {
     ScrollView scrolview1,scrolview2;
     TextView sc1,sc2;
     Button agreebutton ;
+    CheckBox check1, check2, check3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,21 @@ public class AgreeActivity extends AppCompatActivity {
         scrolview2 = findViewById(R.id.scrolview4);
         sc1 = findViewById(R.id.sc3);
         sc2= findViewById(R.id.sc4);
+        check1 = findViewById(R.id.check1);
+        check2 = findViewById(R.id.check2);
+        check3 = findViewById(R.id.check3);
+        check1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(check1.isChecked()){
+                    check2.setChecked(true);
+                    check3.setChecked(true);
+                }else{
+                    check2.setChecked(false);
+                    check3.setChecked(false);
+                }
+            }
+        });
         agreebutton= findViewById(R.id.agreebutton);
         agreebutton.setOnClickListener(new View.OnClickListener() {
             @Override

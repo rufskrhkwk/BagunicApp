@@ -36,7 +36,7 @@ public class Fragment3 extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id){
         String strText = (String) l.getItemAtPosition(position);
         Log.d("Fragment: ", position + ": " +strText);
-        Toast.makeText(this.getContext(), "클릭: " + position +" " + strText, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this.getContext(), "클릭: " + position +" " + strText, Toast.LENGTH_SHORT).show();
         if(position == 0){
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
