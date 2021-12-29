@@ -145,7 +145,7 @@ public class MainActivityL extends AppCompatActivity implements RadialMenuView.R
         if (i == 0) {
             Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
             startActivity(intent);
-            Toast.makeText(this, "반납", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "반납/대여", Toast.LENGTH_SHORT).show();
         } else if (i == 1) {
             sendLED();
             Toast.makeText(this, "LED on", Toast.LENGTH_SHORT).show();

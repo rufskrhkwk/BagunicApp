@@ -32,7 +32,7 @@ public class PayActivity extends AppCompatActivity {
     static RequestQueue requestQueue;
     // 결제 정보를 받을 변수
     static String productName = "Bagunic A set" ; // 상품 이름
-    static String productPrice = "100" ; // 상품 가격
+    static String productPrice = "18000" ; // 상품 가격
     static String parkarea;
     // 웹 뷰
     WebView webView;
@@ -130,7 +130,7 @@ public class PayActivity extends AppCompatActivity {
                 params.put("partner_user_id", "gorany"); // 가맹점 회원 아이디
                 params.put("item_name", "Bagunic A set"); // 상품 이름
                 params.put("quantity", "1"); // 상품 수량
-                params.put("total_amount", "100"); // 상품 총액
+                params.put("total_amount", "18000"); // 상품 총액
                 params.put("tax_free_amount", "0"); // 상품 비과세
                 params.put("approval_url", "http://59.0.129.177:8087/BaguNic_project/kakaoCash_success?email="+productName+"&basket_type="+productPrice+"&park_area="+parkarea); // 결제 성공시 돌려 받을 url 주소
                 params.put("cancel_url", "http://59.0.129.177:8087/BaguNic_project/kakaoCash_fail"); // 결제 취소시 돌려 받을 url 주소

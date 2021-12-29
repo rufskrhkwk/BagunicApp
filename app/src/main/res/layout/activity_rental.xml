@@ -24,7 +24,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            app:srcCompat="@drawable/bagunicseel" />
+            app:srcCompat="@drawable/baaaa3" />
 
         <Spinner
             android:id="@+id/spinner"
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="270dp"
-            android:text="가격: 19000원"
+            android:text="가격: 10000원"
             android:textSize="20sp" />
 
         <TextView

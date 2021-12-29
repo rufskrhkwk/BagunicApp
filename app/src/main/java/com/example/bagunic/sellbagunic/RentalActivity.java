@@ -65,7 +65,7 @@ public class RentalActivity extends AppCompatActivity implements CompoundButton.
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        int result = 19000;///19000
+        int result = 10000;///19000
         if (checkBox1.isChecked()) result += 3000;//3000
         if (checkBox2.isChecked()) result += 5000;//5000
         if (checkBox3.isChecked()) result += 1000;//1000

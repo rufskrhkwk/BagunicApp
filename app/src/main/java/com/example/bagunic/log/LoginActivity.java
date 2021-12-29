@@ -54,19 +54,19 @@ public class LoginActivity extends AppCompatActivity {
         edtpwlog = findViewById(R.id.edtpw);
         btnlog = findViewById(R.id.btnlogin);
         join = findViewById(R.id.join);
-        escape = findViewById(R.id.escape);
+//        escape = findViewById(R.id.escape);
         kakaobutton = findViewById(R.id.kakaobutton);
         //getSharedPreferences("파일이름",'모드')
         //모드 => 0 (읽기,쓰기가능)
         //모드 => MODE_PRIVATE (이 앱에서만 사용가능)
 
-  escape.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-          Intent intent = new Intent(getApplicationContext(),MainActivityL.class);
-          startActivity(intent);
-      }
-  });
+//  escape.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//          Intent intent = new Intent(getApplicationContext(),MainActivityL.class);
+//          startActivity(intent);
+//      }
+//  });
 //        Log.d("KeyHash", getKeyHash());
 
         kakaobutton.setOnClickListener(new View.OnClickListener() {

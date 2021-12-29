@@ -85,14 +85,4 @@
         app:layout_constraintVertical_bias="0.33"
         app:srcCompat="@drawable/kakao_login_medium_narrow" />
 
-    <Button
-        android:id="@+id/escape"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="서버가안될때 하는 비상탈출구"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

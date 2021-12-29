@@ -43,7 +43,7 @@ public class AgreeActivity2 extends AppCompatActivity {
 
         sc3.setText(aa);
 
-        String bb = "기본 2시간 19,000원\n" +
+        String bb = "기본 2시간 10,000원\n" +
                 "※ 1회 대여 후 2시간 이상 이용자에게 시간에 따라 추가 사용료가 발생합니다.\n" +
                 "※ 추가요금 30분당 2,000원\n" +
                 "※다양한 이벤트를 통해 할인정보를 받아가세요\n" +
